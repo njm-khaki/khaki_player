@@ -4,12 +4,11 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:path_provider/path_provider.dart';
 
-class AudioManager {
-  AudioPlayer _player = AudioPlayer();
+class AudioManager extends AudioPlayer {
 
-  AudioManager();
+  AudioManager() : super();
 
-  Future play(String fileName) async {
+  Future playStart(String fileName) async {
     final dir = await getApplicationDocumentsDirectory();
     final file = File('${dir.path}/$fileName');
 
@@ -18,7 +17,7 @@ class AudioManager {
       final bytes = soundData.buffer.asUint8List();
       await file.writeAsBytes(bytes, flush: true);
     }
-    await _player.play(
+    await this.play(
       file.path,
       isLocal: true,
       volume: 1.0
