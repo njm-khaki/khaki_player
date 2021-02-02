@@ -12,17 +12,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.cyan,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => AudioPlayerModel())
-        ],
-        child: KhakiPlayerPage(),
-      )
-    );
+        theme: ThemeData(
+          primarySwatch: Colors.cyan,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: MultiProvider(
+          providers: [
+            // Providerの定義
+            ChangeNotifierProvider(create: (_) => AudioPlayerModel())
+          ],
+          child: KhakiPlayerPage(),
+        ));
   }
 }
-

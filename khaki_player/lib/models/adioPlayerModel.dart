@@ -13,13 +13,16 @@ class AudioPlayerModel extends ChangeNotifier {
 
   /// getters
   String getLabel() => this._label;
+
   int getCurrentPosition() => this._currentPosition;
+
   int getDuration() => this._duration;
+
   IconData getPlayButtonIcon() => this._playButtonIcon;
 
   /// コンストラクタ
   ///  オーディオのイベントの定義
-  AudioPlayerModel():super() {
+  AudioPlayerModel() : super() {
     // 曲の総再生時間が変更されたときのイベント
     this._player.onDurationChanged.listen((Duration p) {
       this._duration = p.inMilliseconds;
@@ -29,10 +32,10 @@ class AudioPlayerModel extends ChangeNotifier {
 
     /// 再生時間が変更されたときの動作
     this._player.onAudioPositionChanged.listen((Duration p) {
-        this._currentPosition = p.inMilliseconds;
-        this._label = _showCurrentPositionForTime();
-        // 変更を更新する
-        notifyListeners();
+      this._currentPosition = p.inMilliseconds;
+      this._label = _showCurrentPositionForTime();
+      // 変更を更新する
+      notifyListeners();
     });
 
     /// 曲の再生が完了したときの動作
@@ -44,6 +47,7 @@ class AudioPlayerModel extends ChangeNotifier {
   }
 
   /// 再生/停止ボタン押下時の処理
+  /// TODO: シークをすると不整合が起きるので要修正
   void onPressPlayButton() {
     switch (this._player.state) {
       case AudioPlayerState.PAUSED:
@@ -79,14 +83,22 @@ class AudioPlayerModel extends ChangeNotifier {
 
   /// 再生時間(ミリ秒)を時間表記に変換する
   String _showCurrentPositionForTime() {
+    // 現在の時間で何時間か求める
     var label = "";
     int hour = this._currentPosition ~/ Duration.millisecondsPerHour;
-    label += hour != 0 ?  "$hour:" : "";
+    label += hour != 0 ? "$hour:" : "";
 
-    var minute = (this._currentPosition.toInt() - hour * Duration.millisecondsPerHour) ~/ Duration.millisecondsPerMinute;
+    // 現在の時間 - 再生時間(h)で残り何分あるか求める
+    var minute =
+        (this._currentPosition.toInt() - hour * Duration.millisecondsPerHour) ~/
+            Duration.millisecondsPerMinute;
     label += minute < 10 ? "0$minute:" : "$minute:";
 
-    var second = (this._currentPosition.toInt() - (hour * Duration.millisecondsPerHour + minute * Duration.millisecondsPerMinute)) ~/ Duration.millisecondsPerSecond;
+    // 現在の時間 - (再生時間(h) + 再生時間(m))で残り何秒あるか求める
+    var second = (this._currentPosition.toInt() -
+            (hour * Duration.millisecondsPerHour +
+                minute * Duration.millisecondsPerMinute)) ~/
+        Duration.millisecondsPerSecond;
     label += second < 10 ? "0$second" : second.toString();
 
     return label;

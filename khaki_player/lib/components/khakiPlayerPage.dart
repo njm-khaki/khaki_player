@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:khaki_player/components/audioControlButton.dart';
 import 'package:khaki_player/components/audioPlayerComponent.dart';
-import 'package:khaki_player/components/audioSeekBar.dart';
 
 class KhakiPlayerPage extends StatefulWidget {
-
   KhakiPlayerPage() : super();
 
   @override
@@ -12,15 +9,12 @@ class KhakiPlayerPage extends StatefulWidget {
 }
 
 class KhakiPlayerState extends State<KhakiPlayerPage> {
-
-  KhakiPlayerState():super();
+  KhakiPlayerState() : super();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Khaki Player')
-      ),
+      appBar: AppBar(title: Text('Khaki Player')),
       body: AudioPlayerComponent(),
     );
     throw UnimplementedError();
