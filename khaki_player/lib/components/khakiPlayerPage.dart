@@ -1,5 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:khaki_player/components/audioControlButton.dart';
+import 'package:khaki_player/components/audioSeekBar.dart';
 import 'dart:async';
 
 import 'package:khaki_player/manager/audioManager.dart';
@@ -54,7 +56,7 @@ class KhakiPlayerState extends State<KhakiPlayerPage> {
   /**
    * 再生/停止ボタン押下時の処理
    */
-  void onPressPlayButton() {
+  void _onPressPlayButton() {
     switch (this._player.state) {
       case AudioPlayerState.PAUSED:
         this._player.resume();
@@ -133,40 +135,15 @@ class KhakiPlayerState extends State<KhakiPlayerPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Image.asset('assets/image/test_image.jpg'),
-                      SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                          valueIndicatorColor: Colors.cyan,
-                          valueIndicatorTextStyle: TextStyle(
-                            color: Colors.white
-                          )
-                        ),
-                        child: Slider(
-                            label: this._label,
-                            value: this._currentPosition.toDouble(),
-                            min: 0,
-                            max: this._duration.toDouble(),
-                            divisions: this._duration,
-                            activeColor: Colors.cyan,
-                            inactiveColor: Colors.cyanAccent,
-                            onChanged: (value) => { _onChangedSeekBar(value) }
-                        ),
+                      AudioSeekBar(
+                          this._label,
+                          this._currentPosition,
+                          this._duration,
+                          this._onChangedSeekBar
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                              icon: Icon(Icons.skip_previous),
-                              onPressed: null
-                          ),
-                          IconButton(
-                              icon: Icon(this._playButtonIcon),
-                              onPressed: () => { onPressPlayButton() }
-                          ),
-                          IconButton(
-                              icon: Icon(Icons.skip_next),
-                              onPressed: null
-                          )
-                        ],
+                      AudioControlButton(
+                          this._playButtonIcon,
+                          this._onPressPlayButton
                       ),
                     ],
                   )
