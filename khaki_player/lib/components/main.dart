@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:khaki_player/components/khakiPlayerPage.dart';
-import 'package:khaki_player/models/adioPlayerModel.dart';
+import 'package:khaki_player/models/audioPlayerModel.dart';
 import 'package:provider/provider.dart';
 
 void main() {
