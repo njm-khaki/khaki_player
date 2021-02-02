@@ -1,14 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:khaki_player/models/adioPlayerModel.dart';
+import 'package:provider/provider.dart';
 
 class AudioControlButton extends StatelessWidget {
-  final IconData _playButtonIcon;
-  final Function _onPressPlayButton;
 
-  AudioControlButton(
-      this._playButtonIcon,
-      this._onPressPlayButton
-      ):super();
+  AudioControlButton():super();
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +17,8 @@ class AudioControlButton extends StatelessWidget {
             onPressed: null
         ),
         IconButton(
-            icon: Icon(this._playButtonIcon),
-            onPressed: () => { _onPressPlayButton() }
+            icon: Icon(Provider.of<AudioPlayerModel>(context).getPlayButtonIcon()),
+            onPressed: () => { Provider.of<AudioPlayerModel>(context, listen: false).onPressPlayButton() }
         ),
         IconButton(
             icon: Icon(Icons.skip_next),

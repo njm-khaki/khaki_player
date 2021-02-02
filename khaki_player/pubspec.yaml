@@ -28,6 +28,7 @@ dependencies:
   seekbar: ^0.0.2
   audioplayers: ^0.17.3
   path_provider: ^1.6.27
+  provider: ^4.3.3
 
 
   # The following adds the Cupertino Icons font to your application.

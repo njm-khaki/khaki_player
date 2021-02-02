@@ -1,18 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:khaki_player/models/adioPlayerModel.dart';
+import 'package:provider/provider.dart';
 
 class AudioSeekBar extends StatelessWidget {
-  final String _label;
-  final int _currentPosition;
-  final int _duration;
-  final Function(double) _onChangedSeekBar;
 
-  AudioSeekBar(
-      this._label,
-      this._currentPosition,
-      this._duration,
-      this._onChangedSeekBar
-      ):super();
+  AudioSeekBar():super();
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +17,14 @@ class AudioSeekBar extends StatelessWidget {
           )
       ),
       child: Slider(
-          label: this._label,
-          value: this._currentPosition.toDouble(),
+          label: Provider.of<AudioPlayerModel>(context).getLabel(),
+          value: Provider.of<AudioPlayerModel>(context).getCurrentPosition().toDouble(),
           min: 0,
-          max: this._duration.toDouble(),
-          divisions: this._duration,
+          max: Provider.of<AudioPlayerModel>(context).getDuration().toDouble(),
+          divisions: Provider.of<AudioPlayerModel>(context).getDuration(),
           activeColor: Colors.cyan,
           inactiveColor: Colors.cyanAccent,
-          onChanged: (value) => { this._onChangedSeekBar(value) }
+          onChanged: (value) => { Provider.of<AudioPlayerModel>(context, listen: false).onChangedSeekBar(value) }
       ),
     );
     // TODO: implement build
