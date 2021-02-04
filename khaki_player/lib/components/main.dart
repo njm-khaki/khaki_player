@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'file:///C:/Users/yutarou/Documents/khaki_player/khaki_player/khaki_player/lib/components/main_page/khakiPlayerPage.dart';
-import 'package:khaki_player/models/audio_player_model.dart';
-import 'package:provider/provider.dart';
+import 'importer.dart';
+
+import 'main_page/khakiPlayerPage.dart';
 
 void main() {
   runApp(MyApp());

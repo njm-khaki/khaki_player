@@ -1,5 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
-
 import '../importer.dart';
 
 import 'package:khaki_player/models/audio_player_model.dart';

@@ -10,7 +10,6 @@ class AudioPlayerModel extends ChangeNotifier {
   int _duration = 1;
   String _label = "";
   IconData _playButtonIcon = Icons.play_arrow;
-  IconData _tmpPlayIcon = Icons.play_arrow;
 
   /// getters
   String getLabel() => _label;
@@ -20,10 +19,6 @@ class AudioPlayerModel extends ChangeNotifier {
   int getDuration() => _duration;
 
   IconData getPlayButtonIcon() => _playButtonIcon;
-  
-  void onSeeking() {
-    _playButtonIcon = _tmpPlayIcon;
-  }
 
   /// コンストラクタ
   ///  オーディオのイベントの定義
@@ -70,7 +65,8 @@ class AudioPlayerModel extends ChangeNotifier {
   }
 
   /// シークバーを移動した後の処理
-  void onChangedSeekBar(double value) => _player.seek(Duration(milliseconds: value.toInt()));
+  void onChangedSeekBar(double value) =>
+      _player.seek(Duration(milliseconds: value.toInt()));
 
   /// 再生時間(ミリ秒)を時間表記に変換する
   String _showCurrentPositionForTime() {
@@ -103,11 +99,9 @@ class AudioPlayerModel extends ChangeNotifier {
       case AudioPlayerState.COMPLETED:
       case AudioPlayerState.PAUSED:
         _playButtonIcon = Icons.play_arrow;
-        _tmpPlayIcon = Icons.play_arrow;
         break;
       case AudioPlayerState.PLAYING:
         _playButtonIcon = Icons.pause;
-        _tmpPlayIcon = Icons.pause;
         break;
       default:
         break;
