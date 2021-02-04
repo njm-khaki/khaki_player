@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:khaki_player/models/audioPlayerModel.dart';
-import 'package:provider/provider.dart';
+import '../importer.dart';
 
 class AudioControlButton extends StatelessWidget {
   AudioControlButton() : super();

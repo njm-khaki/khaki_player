@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import '../importer.dart';
 
-import 'audioControlButton.dart';
-import 'audioSeekBar.dart';
+import 'audio_control_button.dart';
+import 'audio_seek_bar.dart';
 
 class AudioPlayerComponent extends StatelessWidget {
   final double _widthRate = 0.9;
@@ -17,7 +17,7 @@ class AudioPlayerComponent extends StatelessWidget {
       // レイアウト調整
       width: size.width * _widthRate,
       margin: EdgeInsets.fromLTRB(
-          size.width * this._paddingSide, 0, size.width * this._paddingSide, 0),
+          size.width * _paddingSide, 0, size.width * _paddingSide, 0),
       alignment: Alignment.center,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

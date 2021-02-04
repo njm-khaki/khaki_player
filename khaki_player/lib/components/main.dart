@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:khaki_player/components/khakiPlayerPage.dart';
-import 'package:khaki_player/models/audioPlayerModel.dart';
+import 'file:///C:/Users/yutarou/Documents/khaki_player/khaki_player/khaki_player/lib/components/main_page/khakiPlayerPage.dart';
+import 'package:khaki_player/models/audio_player_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -8,7 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  /// This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         ),
         home: MultiProvider(
           providers: [
-            // Providerの定義
+            /// Providerの定義
             ChangeNotifierProvider(create: (_) => AudioPlayerModel())
           ],
           child: KhakiPlayerPage(),

@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:khaki_player/components/audioPlayerComponent.dart';
+import '../importer.dart';
+
+import 'audio_player_component.dart';
 
 class KhakiPlayerPage extends StatefulWidget {
   KhakiPlayerPage() : super();

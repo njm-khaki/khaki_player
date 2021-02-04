@@ -20,6 +20,6 @@ class AudioManager extends AudioPlayer {
       final bytes = soundData.buffer.asUint8List();
       await file.writeAsBytes(bytes, flush: true);
     }
-    await this.play(file.path, isLocal: true, volume: 1.0);
+    await play(file.path, isLocal: true, volume: 1.0);
   }
 }
