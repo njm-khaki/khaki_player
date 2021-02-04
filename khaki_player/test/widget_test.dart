@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:khaki_player/main.dart';
+import 'file:///C:/Users/yutarou/Documents/khaki_player/khaki_player/khaki_player/lib/components/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
