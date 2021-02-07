@@ -4,7 +4,7 @@ import 'audio_control_button.dart';
 import 'audio_seek_bar.dart';
 
 class AudioPlayerComponent extends StatelessWidget {
-  final double _widthRate = 0.9;
+  final  double _widthRate = 0.9;
   final double _paddingSide = 0.05;
 
   AudioPlayerComponent() : super();

@@ -12,13 +12,12 @@ class AudioSeekBar extends StatelessWidget {
           valueIndicatorColor: Colors.cyan,
           valueIndicatorTextStyle: TextStyle(color: Colors.white)),
       child: Slider(
-        label: Provider.of<AudioPlayerModel>(context).getLabel(),
-        value: Provider.of<AudioPlayerModel>(context)
-            .getCurrentPosition()
-            .toDouble(),
+        label: Provider.of<AudioPlayerModel>(context).label,
+        value:
+            Provider.of<AudioPlayerModel>(context).currentPosition.toDouble(),
         min: 0,
-        max: Provider.of<AudioPlayerModel>(context).getDuration().toDouble(),
-        divisions: Provider.of<AudioPlayerModel>(context).getDuration(),
+        max: Provider.of<AudioPlayerModel>(context).duration.toDouble(),
+        divisions: Provider.of<AudioPlayerModel>(context).duration,
         activeColor: Colors.cyan,
         inactiveColor: Colors.cyanAccent,
         onChanged: (value) {

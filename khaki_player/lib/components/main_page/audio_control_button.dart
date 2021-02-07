@@ -10,8 +10,7 @@ class AudioControlButton extends StatelessWidget {
       children: [
         IconButton(icon: Icon(Icons.skip_previous), onPressed: null),
         IconButton(
-            icon: Icon(
-                Provider.of<AudioPlayerModel>(context).getPlayButtonIcon()),
+            icon: Icon(Provider.of<AudioPlayerModel>(context).playButtonIcon),
             onPressed: () => {
                   Provider.of<AudioPlayerModel>(context, listen: false)
                       .onPressPlayButton()
