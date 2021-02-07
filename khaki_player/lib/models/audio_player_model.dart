@@ -1,6 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'package:khaki_player/manager/audio_manager.dart';
 
@@ -12,13 +11,10 @@ class AudioPlayerModel extends ChangeNotifier {
   IconData _playButtonIcon = Icons.play_arrow;
 
   /// getters
-  String getLabel() => _label;
-
-  int getCurrentPosition() => _currentPosition;
-
-  int getDuration() => _duration;
-
-  IconData getPlayButtonIcon() => _playButtonIcon;
+  String get label => _label;
+  int get currentPosition => _currentPosition;
+  int get duration => _duration;
+  IconData get playButtonIcon => _playButtonIcon;
 
   /// コンストラクタ
   ///  オーディオのイベントの定義
@@ -43,7 +39,6 @@ class AudioPlayerModel extends ChangeNotifier {
   }
 
   /// 再生/停止ボタン押下時の処理
-  /// TODO: シークをすると不整合が起きるので要修正
   void onPressPlayButton() {
     switch (_player.state) {
       case AudioPlayerState.PAUSED:
@@ -56,6 +51,7 @@ class AudioPlayerModel extends ChangeNotifier {
         _playStart();
         break;
     }
+    // 状態の更新
     notifyListeners();
   }
 

@@ -7,10 +7,8 @@ import 'package:path_provider/path_provider.dart';
 class AudioManager extends AudioPlayer {
   AudioManager() : super();
 
-  /**
-   * ファイル名を指定して音楽を再生する
-   * TODO: アセットではなくローカルファイルの再生をする
-   */
+  /// ファイル名を指定して音楽を再生する
+  /// TODO: アセットではなくローカルファイルの再生をする
   Future playStart(String fileName) async {
     final dir = await getApplicationDocumentsDirectory();
     final file = File('${dir.path}/$fileName');
